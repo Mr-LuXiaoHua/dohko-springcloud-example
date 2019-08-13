@@ -1,0 +1,20 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: dohko-eureka-client-order-service
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: false
+    # 定义从注册中心获取注册服务的时间间隔
+    registry-fetch-interval-seconds: 10
+
+

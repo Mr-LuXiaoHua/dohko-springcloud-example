@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dohko-registration-euraka-server
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
+    # 是否将自己作为服务注册到eureka服务器
+    fetch-registry: false
+    # 是否从其他eureka服务器同步服务列表
+    register-with-eureka: false
+
+  instance:
+    # 使用ip注册
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dohko.order.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.dohko.order.entity.Order">
+
+        <id property="id" column="id" />
+        <result property="userId" column="user_id" />
+        <result property="commodityCode" column="commodity_code" />
+        <result property="quantity" column="quantity" />
+        <result property="amount" column="amount" />
+
+    </resultMap>
+
+    <sql id="baseColumn">
+        id, user_id, commodity_code, quantity, amount
+    </sql>
+
+
+    <select id="selectById" parameterType="long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM t_order
+        WHERE
+          id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.dohko.order.entity.Order">
+        INSERT INTO order
+        (
+          user_id,
+          commodity_code,
+          quantity,
+          amount
+        )
+        VALUES
+        (
+          #{userId},
+          #{commodityCode},
+          #{quantity},
+          #{amount}
+        )
+    </insert>
+
+
+
+</mapper>

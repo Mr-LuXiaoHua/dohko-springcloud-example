@@ -1,0 +1,3 @@
+DOHKO-EUREKA-CLIENT-FEIGN
+---
+使用Feign调用订单服务

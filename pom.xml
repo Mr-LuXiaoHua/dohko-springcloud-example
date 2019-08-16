@@ -28,6 +28,7 @@
     <modules>
         <module>dohko-registration-euraka-server</module>
         <module>dohko-eureka-client-order-service</module>
+        <module>dohko-eureka-client-feign</module>
     </modules>
 
 

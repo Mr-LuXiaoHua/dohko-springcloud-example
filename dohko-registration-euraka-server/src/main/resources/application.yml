@@ -1,6 +1,6 @@
 spring:
   application:
-    name: dohko-registration-euraka-server
+    name: DOHKO-REGISTRATION-EURAKA-SERVER
 
 server:
   port: 8761

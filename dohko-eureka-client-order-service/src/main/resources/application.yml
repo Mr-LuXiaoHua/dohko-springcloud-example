@@ -10,20 +10,20 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/
     register-with-eureka: true
-    fetch-registry: false
+    fetch-registry: true
     # 定义从注册中心获取注册服务的时间间隔
     registry-fetch-interval-seconds: 10
 
 spring:
   application:
-    name: dohko-eureka-client-order-service
+    name: DOHKO-EUREKA-CLIENT-ORDER-SERVICE
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://120.77.159.10:3306/order?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: 123456
+    password: Jlm@2019!
     hikari:
       minimum-idle: 10
       maximum-pool-size: 60

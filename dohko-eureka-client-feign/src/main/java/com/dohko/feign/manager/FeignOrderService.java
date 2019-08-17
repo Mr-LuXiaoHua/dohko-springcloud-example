@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Date 2019/8/16
  */
 
-@FeignClient(value = "DOHKO-EUREKA-CLIENT-ORDER-SERVICE")
+@FeignClient(value = "DOHKO-EUREKA-CLIENT-ORDER-SERVICE", fallback = FeignOrderServiceFallback.class)
 public interface FeignOrderService {
 
     @GetMapping("/orders/{id}")

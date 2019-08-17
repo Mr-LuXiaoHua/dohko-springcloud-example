@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    # 定义从注册中心获取注册服务的时间间隔
+    registry-fetch-interval-seconds: 10
+
+spring:
+  application:
+    name: DOHKO-EUREKA-CLIENT-ZUUL
+
+
+ribbon:
+  # 使用serviceId方式配置时才生效
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+  # 同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetries: 1
+  # 重试负载均衡其他的实例最大重试次数,不包括首次server
+  MaxAutoRetriesNextServer: 1
+  # 默认false，只有get请求会重试
+  OkToRetryOnAllOperations: false
+
+
+  okhttp:
+    enabled: true
+  http:
+    client:
+      enabled: false
+
+
+zuul:
+  ignoredServices: '*' #忽略所有未配置的service
+
+  # 使用url方式配置时才生效
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  strip-prefix: false
+  routes:
+    order-service: #自定义名称
+      path: /order-service/**
+      serviceId: DOHKO-EUREKA-CLIENT-ORDER-SERVICE #/order-service/开头的路径转发至订单微服务
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: routes

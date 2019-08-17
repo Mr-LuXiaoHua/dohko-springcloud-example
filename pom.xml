@@ -30,6 +30,7 @@
         <module>dohko-eureka-client-order-service</module>
         <module>dohko-eureka-client-feign</module>
         <module>dohko-eureka-client-zuul</module>
+        <module>dohko-eureka-client-gateway</module>
     </modules>
 
 

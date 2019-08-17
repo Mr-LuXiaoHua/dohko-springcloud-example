@@ -47,3 +47,4 @@ dohko-springcloud-example
 
 [Euraka客户端-通过Zuul调用订单服务 dohko-eureka-client-zuul](dohko-eureka-client-zuul)
 
+[Euraka客户端-通过SpringCloud Gateway调用订单服务 dohko-eureka-client-gateway](dohko-eureka-client-zuul)

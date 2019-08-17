@@ -18,3 +18,8 @@ eureka:
 spring:
   application:
     name: DOHKO-EUREKA-CLIENT-FEIGN
+
+
+feign:
+  hystrix:
+    enabled: true

@@ -28,28 +28,6 @@ feign:
   okhttp:
     enabled: true
 
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-      isolation:
-        thread:
-          #目前有两个容器实例，单个请求超时5s,+重试>10s，超15s则熔断
-          timeoutInMilliseconds: 15000
-
-ribbon:
-  #ribbon请求连接的超时时间- 限制3秒内必须请求到服务，并不限制服务处理的返回时间
-  connectTimeout: 3000
-  #请求处理的超时时间 下级服务响应最大时间,超出时间消费方（路由也是消费方）返回timeout,超时时间不可大于断路器的超时时间
-  readTimeout: 5000
-  #同一台实例最大重试次数,不包括首次调用
-  maxAutoRetries: 1
-  #重试负载均衡其他的实例最大重试次数,不包括首次调用
-  maxAutoRetriesNextServer: 1
-  #是否所有操作都重试,false-只对get请求重试
-  okToRetryOnAllOperations: false
 
 
 

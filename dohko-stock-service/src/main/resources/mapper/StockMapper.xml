@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dohko.order.mapper.StockMapper">
+
+    <resultMap id="BaseResultMap" type="com.dohko.order.entity.Stock">
+
+        <id property="id" column="id" />
+        <result property="commodityCode" column="commodity_code" />
+        <result property="num" column="num" />
+
+    </resultMap>
+
+    <sql id="baseColumn">
+        id, commodity_code, num
+    </sql>
+
+
+    <update id="deduct" parameterType="Stock">
+       update t_stock set num = num - #{num} where commodity_code = #{commodityCode} AND num > 0
+    </update>
+
+    <select id="selectByCommodityCode" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM t_stock
+        WHERE commodity_code = #{commodityCode}
+    </select>
+
+
+
+</mapper>

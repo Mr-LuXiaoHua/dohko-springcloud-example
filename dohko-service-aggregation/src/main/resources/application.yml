@@ -1,0 +1,40 @@
+
+server:
+  port: 8803
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    # 定义从注册中心获取注册服务的时间间隔
+    registry-fetch-interval-seconds: 10
+
+spring:
+  application:
+    name: DOHKO-SERVICE-AGGREGATION
+
+
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: false
+
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+
+
+
+

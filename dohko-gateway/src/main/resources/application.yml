@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
+
+spring:
+  application:
+    name: DOHKO-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: DOHKO-SERVICE-AGGREGATION
+        uri: lb://DOHKO-SERVICE-AGGREGATION
+        predicates:
+          - Path=/aggregation-service/**
+        filters:
+        - StripPrefix=0
+      - id: DOHKO-STOCK-SERVICE
+        uri: lb://DOHKO-STOCK-SERVICE
+        predicates:
+        - Path=/stock-service/**
+        filters:
+        - StripPrefix=0
+      - id: DOHKO-ORDER-SERVICE
+        uri: lb://DOHKO-ORDER-SERVICE
+        predicates:
+        - Path=/order-service/**
+        filters:
+        - StripPrefix=0

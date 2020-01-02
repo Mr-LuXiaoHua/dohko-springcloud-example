@@ -8,7 +8,9 @@ dohko-springcloud-example
 
 请求到达网关，网关调用聚合服务，由聚合服务完成对订单服务和库存服务的调用：
 
-![](/blob/master/dohko-springcloud-example/static/service-demo.png)
+![](https://github.com/Mr-LuXiaoHua/dohko-springcloud-example/blob/master/static/service-demo.png)
+
+[建表语句](https://github.com/Mr-LuXiaoHua/dohko-springcloud-example/tree/master/static)
 
 
 
